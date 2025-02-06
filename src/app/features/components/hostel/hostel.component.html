@@ -3,5 +3,22 @@
     <div class="d-flex justify-content-end mt-3">
     <a class="btn btn-primary" [routerLink]="['/admin/hostels/add']">Add Hostel</a>
     </div>
-    <p>TABLE HOSTLE HERE</p>
+    <ng-container *ngIf="hostels">
+        <table class="table table-bordered mt-3">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hostel of hostels">
+               <td>{{hostel.id}}</td> 
+               <td>{{hostel.name}}</td> 
+               <td>{{hostel.description}}</td> 
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
 </div>
