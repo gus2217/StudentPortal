@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AddHostelDto } from '../dtos/addhostelrequest.model';
 import { HostelService } from '../hostel.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addhostel',
@@ -11,7 +12,7 @@ export class AddhostelComponent {
 
   model:AddHostelDto;
  
-  constructor( private hostelService:HostelService){
+  constructor( private hostelService:HostelService,private router:Router){
    this.model={
     name:'',
     description:''
@@ -24,7 +25,7 @@ export class AddhostelComponent {
    .subscribe(
     {
       next:(response)=>{
-        console.log("this was successful");
+        this.router.navigateByUrl('/admin/hostels')
       }
     }
    )
