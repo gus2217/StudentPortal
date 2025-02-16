@@ -17,6 +17,10 @@
                <td>{{hostel.id}}</td> 
                <td>{{hostel.name}}</td> 
                <td>{{hostel.description}}</td> 
+               <td>
+                <a  type ="button" class="btn btn-warning" [routerLink]="['/admin/hostels', hostel.id]"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                <a type="button" class="btn btn-danger ms-3" (click)="onDelete(hostel.id)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+              </td>
             </tr>
           </tbody>
         </table>

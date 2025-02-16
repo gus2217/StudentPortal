@@ -15,6 +15,19 @@ export class HostelComponent {
   }
 
   ngOnInit(): void {
+    this.loadHostels();
+  }
+  onDelete(id: string) {
+    this.hostelService.deleteHostel(id).subscribe({
+      next: () => {
+        this.loadHostels(); // Refresh category list
+      },
+      error: (err) => {
+        console.error("Error deleting category:", err);
+      }
+    });
+  }
+  loadHostels() {
     this.hostelService.getAllHostels()
     .subscribe({
       next:(response)=>{
@@ -22,5 +35,4 @@ export class HostelComponent {
       }
     })
   }
-
 }

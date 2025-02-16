@@ -4,6 +4,7 @@ import { AddHostelDto } from './dtos/addhostelrequest.model';
 import { Observable } from 'rxjs';
 import { HostelToDisplay } from './dtos/hosteltodisplay.model';
 import { environment } from 'src/environments/environment.development';
+import { UpdateHostelRequest } from './dtos/updatehostel.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,4 +19,17 @@ export class HostelService {
   getAllHostels():Observable<HostelToDisplay[]>{
     return this.http.get<HostelToDisplay[]>(`${environment.localApiUrl}/Hostel`)
     }
+    
+  getHostelById(id:string):Observable<HostelToDisplay>{
+    return this.http.get<HostelToDisplay>(`${environment.localApiUrl}/Hostel/${id}`);
+  }
+
+  updateHostel(id:string,model:UpdateHostelRequest):Observable<HostelToDisplay>{
+    return this.http.put<HostelToDisplay>(`${environment.localApiUrl}/Hostel/${id}`,model)
+  }
+
+  deleteHostel(id:string):Observable<HostelToDisplay>{
+    return this.http.delete<HostelToDisplay>(`${environment.localApiUrl}/Hostel/${id}`)
+  }
+
 }
